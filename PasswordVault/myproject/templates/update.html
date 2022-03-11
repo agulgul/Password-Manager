@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+
+  <div class="card text-dark bg-light mb-3 mt-3 border border-dark border-2" style="max-width:30rem;">
+    <div class="card-body">
+      <form method='POST' action="">
+          {% csrf_token %}
+          
+          <h1 class="display-5 ">Update Credential</h1>
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <div class="input-group mb-3">
+            <!--username-->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-user"></i></i></span>
+            <input type="text" class="form-control" name="username" value="{{obj.name}}" placeholder="Enter Your Username" required>
+          </div>
+          
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <div class="input-group mb-3">
+            <!--password-->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-lock icon"></i></span>
+            <input type="password" class="form-control password" name="password" value="{{cred}}" placeholder="Enter Your Password" required>
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-eye-slash showHidePw"></i></span>
+          </div>
+  
+          <label for="exampleInputPassword1" class="form-label">URL</label>
+          <div class="input-group mb-3">
+              <!--password confirmation-->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-brackets-curly"></i></span>
+            <input type="url" class="form-control" name="url" value="{{obj.url}}" placeholder="Enter Your URL" required>
+          </div>
+          
+          <!-- <div class="d-grid gap-2">
+              <input class="btn btn-primary" type="submit" value="Save">
+          </div>
+          <div class="d-grid gap-2">
+              <input class="btn btn-primary" type="submit" value="Cancel">
+          </div> -->
+          <div class="row">
+              <div class="col-6 d-grid gap-2"><input class="btn btn-success rounded-pill border border-dark" type="submit" value="Save"></div>
+              <div class="col-6 d-grid gap-2"><a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary rounded-pill border border-dark">Cancel</a></div>
+            </div>
+      </form>
+
+    <div>
+    <div>
+</div>
+{% endblock  %}

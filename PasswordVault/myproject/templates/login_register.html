@@ -1,0 +1,107 @@
+{% extends 'main.html' %}
+
+{% block content  %}
+
+{% if page == 'login'%}
+<div class="container d-flex justify-content-center">
+  <div class="card text-dark bg-light mb-3 mt-3 border border-dark border-2" style="max-width:25rem;">
+    <div class="card-body ">
+      {% if error_message %}
+      <div class="alert alert-danger" role="alert">
+        {{error_message}}
+      </div>
+      {% endif %}
+      <form method='POST' action="">
+        {% csrf_token %}
+        <h1 class="display-5 text-center">LOGIN</h1>
+
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <div class="input-group mb-3 ">
+          <!--username-->
+          <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-user"></i></i></span>
+          <input type="text" class="form-control"  name="username" placeholder="Enter Your Username" required>
+        </div>
+        
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <div class="input-group mb-3">
+          <!--password-->
+          <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-lock icon"></i></span>
+          <input type="password" class="form-control password" name="password" placeholder="Enter Your Password" required>
+          <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-eye-slash showHidePw"></i></span>
+        </div>
+
+        <div id="emailHelp" class="form-text text-center">Haven't sign up yet? <a href="{% url 'register' %}">Signup</a></div>
+
+        <div class="d-grid gap-2 mt-3">
+            <input class="btn btn-primary rounded-pill border border-dark" type="submit" value="Login">
+        </div>
+       
+    </form>
+    <div>
+  <div>
+
+
+</div>
+<!--==============================================================================-->
+
+<!-- register -->
+{% else %}
+<div class="container d-flex justify-content-center">
+  <div class="card text-dark bg-light mb-3 mt-3 border border-dark border-2" style="max-width: 25rem;">
+    <div class="card-body">
+      <form method='POST' action="">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+          {{form.errors}}
+        </div>
+        {% endif %}
+          <h1 class="display-5 text-center">REGISTER</h1>
+
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <div class="input-group mb-3">
+            <!--username-->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-user"></i></i></span>
+            {{ form.username }}
+            <!-- <input type="text" class="form-control"  name="username" placeholder="Enter Your Username" required> -->
+          </div>
+
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <div class="input-group mb-3">
+            <!--username-->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-envelope"></i></span>
+            {{ form.email }}
+            <!-- <input type="text" class="form-control"  name="username" placeholder="Enter Your Username" required> -->
+          </div>
+          
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <div class="input-group mb-3">
+            <!--password 1-->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-lock icon"></i></span>
+            {{ form.password1 }}
+            <!-- <input type="password" class="form-control password" name="password" placeholder="Enter Your Password" required> -->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-eye-slash showHidePw"></i></span>
+          </div>
+
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <div class="input-group mb-3">
+            <!--password 2-->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-lock icon"></i></span>
+            {{ form.password2 }}
+            <!-- <input type="password" class="form-control password" name="password" placeholder="Enter Your Password" required> -->
+            <span class="input-group-text" id="inputGroup-sizing-default"><i class="uil uil-eye-slash showHidePw"></i></span>
+          </div>
+
+          <div id="emailHelp" class="form-text text-center">Already sign up yet? <a href="{% url 'login' %}">Sign in</a></div>
+          <div class="d-grid gap-2 mt-3">
+              <input class="btn btn-primary rounded-pill border border-dark" type="submit" value="Signup">
+          </div>
+         
+      </form>
+    <div>
+  <div>
+
+</div>
+{% endif %}
+{% endblock  %}
